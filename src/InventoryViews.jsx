@@ -2,8 +2,6 @@ import './App.css'
 
 export default function InventoryViews({inventory}) {
 
-
-
   return (
     <>
       <h2>Inventory Views</h2>
