@@ -1,7 +1,8 @@
 // import { useState } from 'react'
 import './App.css'
 import InventoryViews from './InventoryViews'
-import DerivedSanity from './DerivedSanity';
+import DerivedSanity from './DerivedSanity'
+import ReducerRunLoop from './ReducerRunLoop'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       
       {/* <InventoryViews inventory={inventory}></InventoryViews> */}
       {/* <DerivedSanity></DerivedSanity> */}
+      {<ReducerRunLoop></ReducerRunLoop>}
     
     </>
   )
