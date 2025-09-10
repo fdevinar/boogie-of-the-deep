@@ -32,12 +32,14 @@ export default function ReducerRunLoop() {
         sanity: 100,
     });
 
+    // FIX THIS TO AVOID RUNNING EVERY RENDER
+    // MAYBE LEAVE IT IF ONLY USING FOR CLASS STYLING
     useEffect(()=> {
         if(state.sanity >= 200) {
-            alert('ENLIGHTENED');
+            console.log('ENLIGHTENED');
         }
         if(state.sanity <= -50) {
-            alert('THE OLD ONES APPROACH');
+            console.log('THE OLD ONES APPROACH');
         }
     }),[state.sanity]
     
