@@ -1,9 +1,11 @@
 import './App.css'
 import { useReducer, useEffect } from 'react'
+import { checkResult } from './utils/dice-roll.js'
 
 const MOVE = 'MOVE';
 const PICKUP = 'PICKUP';
 const SANITY = 'SANITY';
+const DICE = 'DICE';
 
 function reducer(state,action) {
         switch (action.type) {
@@ -19,6 +21,10 @@ function reducer(state,action) {
                 return {...state,                    
                     sanity: state.sanity + action.delta
                 }                                                
+            case DICE:
+                return {...state,
+                    dice: [...state.dice, action.result]
+                }    
             default:
             throw Error('unknown action: ' + action.type);
         }        
@@ -30,10 +36,10 @@ export default function ReducerRunLoop() {
         steps: 8,
         items: ['NOTEBOOK'],
         sanity: 100,
+        dice: []
     });
 
-    // FIX THIS TO AVOID RUNNING EVERY RENDER
-    // MAYBE LEAVE IT IF ONLY USING FOR CLASS STYLING
+    // FIX THIS TO AVOID RUNNING EVERY RENDER    
     useEffect(()=> {
         if(state.sanity >= 200) {
             console.log('ENLIGHTENED');
@@ -55,6 +61,16 @@ export default function ReducerRunLoop() {
         <p>SANITY: {state.sanity}</p>
         <button onClick={()=> dispatch({type: SANITY, delta: +10 })}>+</button>
         <button onClick={()=> dispatch({type: SANITY, delta: -30 })}>-</button>
+        <br />
+        <br />
+        <div className='dice-roll-wrapper'>DICE ROLL:        
+        {state.dice.map(
+            (item) => <button className={item ? 'success' : 'fail'}>🎲</button>
+        )}
+        </div>        
+        <button onClick={()=> dispatch({type: DICE, result: checkResult(50)})}>ROLL</button>
+        
+
         </>
     )
 }

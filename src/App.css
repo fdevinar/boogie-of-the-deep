@@ -16,3 +16,14 @@
   width: fit-content;
   border-radius: 18px;
 }
+.dice-roll-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.dice-roll-wrapper button {
+  background-color: green;
+  &.fail {
+    background-color: red;
+  }
+}
