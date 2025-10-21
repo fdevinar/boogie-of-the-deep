@@ -27,3 +27,14 @@
     background-color: red;
   }
 }
+p.status {
+  font-size: 18px;
+  width: fit-content;
+  &.sane {
+    color: cyan;
+  }
+  &.insane {
+    color: crimson;
+    background-color: yellow;
+  }
+}

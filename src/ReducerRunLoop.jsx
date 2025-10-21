@@ -58,6 +58,11 @@ export default function ReducerRunLoop() {
     return (
         <>
         <h2>Reducer Run Loop</h2>     
+        <h3>STATE: </h3>
+        <p className={state.sanity > 30 ? 'status sane' : 'status insane'}>
+            {state.steps > 0 ? `You still have ${state.steps} steps left on this journey, ` : "You're at the end of the journey..."}
+            and you're carrying {state.items.length} items...                    
+        </p>
         <button onClick={()=> dispatch({type: RESET})}>RESET STATE</button>
         <p>Steps: {state.steps}</p>
         <p>Items: {state.items.join(', ')}</p>
