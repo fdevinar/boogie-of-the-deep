@@ -49,7 +49,7 @@ Dark, suffocating area; searching here costs heavy sanity or steps. Could hide o
 Below the stern, it housed the machinery controlling the rudder.
 Endgame or fail state zone — flooded, jammed, or vibrating from strain.
 
-📜 Captain’s Lobby / Cabin
+📜 Captain’s Cabin
 
 (Represented as “Lobby” near the top midship.)
 Command quarters where the Captain’s Log Page might be found.
