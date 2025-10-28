@@ -1,6 +1,6 @@
 import './App.css'
 import { useReducer, useEffect } from 'react'
-import { checkResult } from './utils/dice-roll.js'
+import { checkResult } from '../utils/dice-roll.js'
 
 const MOVE = 'MOVE';
 const PICKUP = 'PICKUP';
