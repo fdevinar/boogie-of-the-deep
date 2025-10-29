@@ -5,36 +5,20 @@
   padding: 2rem;
 }
 
-.card-wrapper {
+.hud-bar {
   display: flex;
-  gap: 12px;
-}
-.card-wrapper .card {
-  background-color: grey;
-  border: 1px solid black;
-  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
   width: fit-content;
-  border-radius: 18px;
+  padding: 8px 12px;
+  margin-top: 24px;
+  border-radius: 12px;
+  background-color: darkmagenta;
+  color: white;
 }
-.dice-roll-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.dice-roll-wrapper button {
-  background-color: green;
-  &.fail {
-    background-color: red;
-  }
-}
-p.status {
-  font-size: 18px;
-  width: fit-content;
-  &.sane {
-    color: cyan;
-  }
-  &.insane {
-    color: crimson;
-    background-color: yellow;
-  }
+.hud-bar p {
+  padding: 4px;
+  border:  0.5px dashed grey;
+  border-radius: 12px;
 }

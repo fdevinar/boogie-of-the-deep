@@ -2,7 +2,7 @@
 export function getInitialState () {
     return {
         steps: 8,
-        items: ['NOTEBOOK'],
+        items: [],
         sanity: 100,
         dice: []
     }
