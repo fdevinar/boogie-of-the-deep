@@ -2,11 +2,12 @@
 import { MOVE, PICKUP, SANITY_CHANGE, DICE, RESET } from "./actions";
 import { getInitialState } from "./initialState";
 
-export function reducer(state,action) {
+export function reducer(state,action) {    
         switch (action.type) {
             case MOVE:
                 return {...state,
                     steps: state.steps -1,                
+                    roomId: action.room
                 };
             case PICKUP:
                 return {...state,            

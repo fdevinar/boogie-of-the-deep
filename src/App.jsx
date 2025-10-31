@@ -1,6 +1,7 @@
 
 import { useReducer } from 'react'
 import './App.css'
+import { MOVE, PICKUP, SANITY_CHANGE, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
 import { getInitialState } from './core/initialState'
 import HudBar from './features/hud/HudBar'
@@ -12,15 +13,14 @@ function App() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   
   function handleChoiceSelect(choice) {
-    console.log(choice);
+    dispatch({type: MOVE, room: choice});
   }
 
   return (
     <>
       <h1>BOOGIE OF THE DEEP</h1>
 
-      <RoomView roomId={state.roomId} onChoiceSelect={(choice)=>handleChoiceSelect(choice)}></RoomView>      
-
+      <RoomView roomId={state.roomId} onChoiceSelect={(choice)=>handleChoiceSelect(choice)}></RoomView>
       <HudBar state={state}></HudBar>
    
     </>
