@@ -2,9 +2,9 @@
 export function getInitialState () {
     return {
         steps: 8,
-        items: [],
+        inventory: [],
         sanity: 100,
         dice: [],
-        roomId: "Forecastle"
+        room: "Forecastle"
     }
 }

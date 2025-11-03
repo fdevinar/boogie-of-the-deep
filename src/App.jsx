@@ -10,17 +10,36 @@ import RoomView from './rooms/RoomView'
 
 function App() {
 
+  // using reducer initializer - undefined here means -> no preloaded state
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   
   function handleChoiceSelect(choice) {
-    dispatch({type: MOVE, room: choice});
+    switch (choice.action) {
+      
+      case MOVE : 
+        dispatch({type: MOVE, room: choice.target});
+        break;
+
+      case PICKUP : 
+        dispatch({type: PICKUP, item: choice.target});
+        break;
+
+      default :
+        break;
+    }
   }
 
   return (
     <>
       <h1>BOOGIE OF THE DEEP</h1>
 
-      <RoomView roomId={state.roomId} onChoiceSelect={(choice)=>handleChoiceSelect(choice)}></RoomView>
+      <RoomView
+          room={state.room}
+          onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
+          inventory={state.inventory}
+          
+      >
+      </RoomView>
       <HudBar state={state}></HudBar>
    
     </>

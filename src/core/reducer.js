@@ -7,11 +7,11 @@ export function reducer(state,action) {
             case MOVE:
                 return {...state,
                     steps: state.steps -1,                
-                    roomId: action.room
+                    room: action.room
                 };
             case PICKUP:
                 return {...state,            
-                    items: [...state.items, action.item]
+                    inventory: [...state.inventory, action.item]
                 }
             case SANITY_CHANGE:
                 return {...state,                    
