@@ -5,7 +5,7 @@ const rooms =
         "text": "You arrive at the forecastle, you feel this ships holds misteries.",
         "choices": [
             {"label": "Go to Dining Room", "action": "MOVE", "target": "Dining Room"},
-            {"label": "Go to Store Room", "action": "MOVE", "target": "Store Room"}
+            {"label": "Go to Store Room", "action": "MOVE", "target": "Store Room"},
         ]           
     },
     "Dining Room": {
@@ -14,8 +14,14 @@ const rooms =
     "Store Room": {
         text: "The store room reeks of stale air and bad memories",
         "choices": [
-            {"label": "Pickup the Wrench", "action": "PICKUP", "target": "Wrench"},            
+            {"label": "Go to Engine Room", "action": "MOVE", "target": "Engine Room"},
+            {"label": "Pickup the Wrench", "action": "PICKUP", "target": "Wrench",
+             "message": "You pick up the Wrench.. It feels heavy, like it could break apart soft wood."},
+
         ]
+    },
+    "Engine Room": {
+        text: "The hum of the machines, a perfect mix of chaos, steam and steel..."
     },
 }
 

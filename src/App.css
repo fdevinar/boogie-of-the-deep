@@ -47,6 +47,18 @@ h1 {
   width: fit-content;  
   border-radius: 6px;
   padding: 6px;
-  background-color: moccasin;
   color: #000;
+  &.move {
+    background-color: moccasin;
+  }
+  &.pickup {
+    background-color: chocolate;
+  }
+}
+.room-view .message-toast {
+  color: ivory;
+  background-color: darkorchid;
+  padding: 4px;
+  border-radius: 4px;
+  margin-top: 8px;
 }

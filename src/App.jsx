@@ -1,5 +1,5 @@
 
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 import './App.css'
 import { MOVE, PICKUP, SANITY_CHANGE, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
@@ -12,8 +12,15 @@ function App() {
 
   // using reducer initializer - undefined here means -> no preloaded state
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
+  const [messageToast, setMessageToast] = useState('');
   
   function handleChoiceSelect(choice) {
+
+    setMessageToast('');
+    if (choice.message) {
+      setMessageToast(choice.message);
+    }
+
     switch (choice.action) {
       
       case MOVE : 
@@ -35,9 +42,9 @@ function App() {
 
       <RoomView
           room={state.room}
+          inventory={state.inventory}          
+          message={messageToast}
           onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
-          inventory={state.inventory}
-          
       >
       </RoomView>
       <HudBar state={state}></HudBar>
