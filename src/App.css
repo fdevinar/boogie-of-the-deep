@@ -48,17 +48,29 @@ h1 {
   border-radius: 6px;
   padding: 6px;
   color: #000;
-  &.move {
-    background-color: moccasin;
+  font-size: 16px;
+  &.move {    
+    background: linear-gradient(#3d4348, #1f2225);
+    border: 1px solid #555;
+    color: #d3d7db;
+    &:hover {
+      box-shadow: 0 0 4px rgba(100,200,255,0.4)
+    }
   }
   &.pickup {
-    background-color: chocolate;
+    background-color: linear-gradient(#6c5b3f, #4b3f2d);
+    border: 1px solid #2f261c;
+    color: #f4e8c1;
+    &:hover {
+      box-shadow: 0 0 4px rgba(255,210,100,0.3);
+    }
   }
 }
 .room-view .message-toast {
-  color: ivory;
-  background-color: darkorchid;
+  color: #f0d9a0;
+  text-shadow: 0 0 3px rgba(240,217,160,0.4);
   padding: 4px;
   border-radius: 4px;
   margin-top: 8px;
+  font-size: 14px;
 }

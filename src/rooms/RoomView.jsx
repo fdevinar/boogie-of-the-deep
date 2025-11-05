@@ -2,12 +2,7 @@
 import rooms from "./rooms"
 
 export default function RoomView({ room, inventory, message, onChoiceSelect,  }) {
-    
-    function onDisplayMessage() {
-        console.log('this is the message on roomview');
-
-    }
-
+        
     return (
         <div className="room-view">
             <p>{rooms[room].text}</p>
@@ -17,7 +12,7 @@ export default function RoomView({ room, inventory, message, onChoiceSelect,  })
                 .filter((choice) => choice.action != 'PICKUP' ||  !inventory.includes(choice.target))
                 // MAP ALL CHOICES
                 .map(choice =>
-                    <button key={choice.label} className={choice.action === 'MOVE' ? "move" : "pickup"}
+                    <button key={choice.label} className={choice.action.toLowerCase()}
                         onClick={()=>onChoiceSelect(choice)}>{choice.label}
                     </button>                    
                 ):'☠️ You arrived at a dead end...'}
