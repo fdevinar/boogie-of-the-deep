@@ -21,7 +21,15 @@ const rooms =
         ]
     },
     "Engine Room": {
-        text: "The hum of the machines, a perfect mix of chaos, steam and steel..."
+        text: "The hum of the machines, a perfect mix of chaos, steam and steel...",
+        "choices": [
+            {"label": "Go to Boiler Room", "action": "MOVE", "target": "Boiler Room",
+             "conditions": {has:['Wrench']}
+            },
+        ]
+    },
+    "Boiler Room": {
+        text: "The heart of the ship...",        
     },
 }
 
