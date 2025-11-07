@@ -5,13 +5,14 @@ import rooms from "./rooms"
 export default function RoomView({ room, inventory, message, onChoiceSelect,  }) {
 
     // DEBUG CHOICES
-    useEffect(() => {
-        console.log(rooms[room].choices);
-    })
+    // useEffect(() => {
+    //     console.log(rooms[room].choices);
+    // })
         
     return (
         <div className="room-view">
-            <p>{rooms[room].text}</p>
+            <h2>{room}</h2>
+            <p className="text">{rooms[room].text}</p>
             <div className="choices">
                 {rooms[room].choices ? rooms[room].choices
                 // FILTER OUT ACQUIRED INVENTORY                            

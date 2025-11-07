@@ -1,5 +1,6 @@
 
 const rooms =
+
 {
     "Forecastle": {
         "text": "You arrive at the forecastle, you feel this ships holds misteries.",
@@ -24,7 +25,8 @@ const rooms =
         text: "The hum of the machines, a perfect mix of chaos, steam and steel...",
         "choices": [
             {"label": "Go to Boiler Room", "action": "MOVE", "target": "Boiler Room",
-             "conditions": {has:['Wrench']}
+                "conditions": {has:['Wrench']},
+                "message": "You used the Wrench to open a passage to the Boiler Room",
             },
         ]
     },

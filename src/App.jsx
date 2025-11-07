@@ -15,22 +15,18 @@ function App() {
   const [messageToast, setMessageToast] = useState('');
   
   function handleChoiceSelect(choice) {
-
+    console.log(choice);
     setMessageToast('');
     if (choice.message) {
       setMessageToast(choice.message);
     }
-
-    switch (choice.action) {
-      
+    switch (choice.action) { 
       case MOVE : 
         dispatch({type: MOVE, room: choice.target});
         break;
-
       case PICKUP : 
         dispatch({type: PICKUP, item: choice.target});
         break;
-
       default :
         break;
     }
@@ -38,7 +34,7 @@ function App() {
 
   return (
     <>
-      <h1>BOOGIE OF THE DEEP</h1>
+      <h1 onClick={()=>dispatch({type: RESET})}>BOOGIE OF THE DEEP</h1>
       {/* SS BRUIT 1920 */}
 
       <RoomView
