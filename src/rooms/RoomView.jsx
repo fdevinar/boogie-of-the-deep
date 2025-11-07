@@ -13,6 +13,7 @@ export default function RoomView({ room, inventory, message, onChoiceSelect,  })
         <div className="room-view">
             <h2>{room}</h2>
             <p className="text">{rooms[room].text}</p>
+            {rooms[room].comment && <p className="comment">{rooms[room].comment}</p>}
             <div className="choices">
                 {rooms[room].choices ? rooms[room].choices
                 // FILTER OUT ACQUIRED INVENTORY                            
@@ -26,7 +27,8 @@ export default function RoomView({ room, inventory, message, onChoiceSelect,  })
                     </button>                    
                 ):'☠️ You arrived at a dead end...'}
             </div>
-            {message && <p className="message-toast">{message}</p>}            
+            {message && <p className="message">{message}</p>}
+            
         </div>
     )
 }

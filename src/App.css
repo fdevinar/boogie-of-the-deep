@@ -12,6 +12,9 @@ h1 {
   text-shadow: 1px 1px #FFF;
 }
 
+
+
+/* HUD */
 .hud-bar {
   display: flex;  
   flex-direction: column;
@@ -39,6 +42,9 @@ h1 {
   width: fit-content;
 }
 
+
+
+/* ROOM VIEW */
 .room-view {
   width: 500px;
   margin: 24px 12px;
@@ -49,9 +55,8 @@ h1 {
 .room-view h2 {
   margin-bottom: 16px;
 }
-.room-view p.text {
-  margin-bottom: 16px;
-}
+
+/* CHOICES */
 .room-view .choices {
   display: flex;
   flex-direction: column;
@@ -85,11 +90,23 @@ h1 {
     }
   }
 }
-.room-view .message-toast {
+
+/* TEXT */
+.room-view p.text {
+  margin-bottom: 16px;
+}
+.room-view .message {
   color: #f0d9a0;
   text-shadow: 0 0 3px rgba(240,217,160,0.4);
   padding: 4px;
   border-radius: 4px;
   margin-top: 8px;
   font-size: 14px;
+}
+.room-view .comment {
+  font-size: 14px;
+  color: #9bb3c5;
+  font-style: italic;
+  text-shadow: 0 0 3px rgba(155,179,197,0.25);
+  margin: 12px 12px 24px;
 }

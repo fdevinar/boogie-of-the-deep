@@ -10,7 +10,8 @@ const rooms =
         ]           
     },
     "Dining Room": {
-        text: "A ghoulish banquet has been held here aeons ago"
+        text: "A ghoulish banquet has been held here aeons ago",
+        comment: "You don't know where to go next",
     },
     "Store Room": {
         text: "The store room reeks of stale air and bad memories",
@@ -23,6 +24,7 @@ const rooms =
     },
     "Engine Room": {
         text: "The hum of the machines, a perfect mix of chaos, steam and steel...",
+        comment: "You could use a tool to open a passage to another room",
         "choices": [
             {"label": "Go to Boiler Room", "action": "MOVE", "target": "Boiler Room",
                 "conditions": {has:['Wrench']},
