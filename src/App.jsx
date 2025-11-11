@@ -45,6 +45,8 @@ function App() {
       >
       </RoomView>
       <HudBar state={state}></HudBar>
+
+      <p class="dev-pride">Build v0.1</p>
    
     </>
   )

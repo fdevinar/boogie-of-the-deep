@@ -12,6 +12,12 @@ h1 {
   text-shadow: 1px 1px #FFF;
 }
 
+p.dev-pride {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+
 
 
 /* HUD */
