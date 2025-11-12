@@ -46,9 +46,14 @@ p.dev-pride {
   border:  0.5px dashed grey;
   border-radius: 12px;
   width: fit-content;
+  color: #9bb3c5;  
+  animation: blink 400ms ease;
 }
-
-
+@keyframes blink {
+  0% { transform: scale(1); color: #d3d8de; }
+  30% { transform: scale(1.15); color: #ffffff; }
+  100% { transform: scale(1); color: #d3d8de; }
+}
 
 /* ROOM VIEW */
 .room-view {

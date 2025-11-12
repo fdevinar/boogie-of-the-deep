@@ -11,7 +11,14 @@ const rooms =
     },
     "Dining Room": {
         text: "A ghoulish banquet has been held here aeons ago",
-        comment: "You don't know where to go next",
+        comment: "You're not sure moving to the next room is a good thing, you can't see where it leads.",
+        "choices": [
+            {"label": "Go to next room", "action": "MOVE", "target": "Lobby", "effect": {sanity: -20},},
+        ]
+    },
+    "Lobby": {
+        text: "The lobby is quiet, maybe too quiet",
+        comment: "You start to doubt yourself",
     },
     "Store Room": {
         text: "The store room reeks of stale air and bad memories",

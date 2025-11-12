@@ -15,10 +15,18 @@ function App() {
   const [messageToast, setMessageToast] = useState('');
   
   function handleChoiceSelect(choice) {
-    console.log(choice);
+    // console.log(choice);
+    
+    // MESSAGE TOAST -> YELLOW FEEDBACK AFTER ACTION
     setMessageToast('');
     if (choice.message) {
       setMessageToast(choice.message);
+    }
+    // IF ANY EFFECT IS APPLIED
+    if (choice.effect) {
+      if (choice.effect.sanity) {
+        dispatch({type: SANITY_CHANGE, delta: choice.effect.sanity});
+      }
     }
     switch (choice.action) { 
       case MOVE : 
@@ -46,7 +54,7 @@ function App() {
       </RoomView>
       <HudBar state={state}></HudBar>
 
-      <p class="dev-pride">Build v0.1</p>
+      <p className="dev-pride">Build v0.1</p>
    
     </>
   )

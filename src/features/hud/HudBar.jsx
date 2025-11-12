@@ -4,11 +4,11 @@ export default function HudBar({state}) {
         <div className="hud-bar">
             <h3>HUD</h3>
             <div className="stats">
-                <p>Steps left: {state.steps}</p>
-                <p>Sanity: {state.sanity}</p>
+                <p key={state.steps}>Steps left: {state.steps}</p>
+                <p key={state.sanity}>Sanity: {state.sanity}</p>
             </div>
             <div className="inventory">
-                <p>Inventory: {state.inventory.length > 0 ? state.inventory.join(', ') : "Empty" }</p>
+                <p key={state.inventory.length}>Inventory: {state.inventory.length > 0 ? state.inventory.join(', ') : "Empty" }</p>
             </div>
         </div>
     )
