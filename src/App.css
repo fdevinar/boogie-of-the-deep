@@ -64,7 +64,16 @@ p.dev-pride {
   border-radius: 32px;
 }
 .room-view h2 {
-  margin-bottom: 16px;
+  opacity: 0.5;
+  text-shadow: 1px 1px steelblue;
+  margin-bottom: 12px;  
+}
+.room-view img.room-image {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;      
 }
 
 /* CHOICES */

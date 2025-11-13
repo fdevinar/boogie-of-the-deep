@@ -3,9 +3,10 @@ const rooms =
 
 {
     "Forecastle": {
-        "text": "You arrive at the forecastle, you feel this ships holds misteries.",
+        "text": "You arrive at the forecastle, you feel this ships holds misteries.",     
+        "image": "src/assets/forecastle.png",   
         "choices": [
-            {"label": "Go to Dining Room", "action": "MOVE", "target": "Dining Room"},
+            {"label": "Go to Dining Room", "action": "MOVE", "target": "Dining Room",},
             {"label": "Go to Store Room", "action": "MOVE", "target": "Store Room"},
         ]           
     },

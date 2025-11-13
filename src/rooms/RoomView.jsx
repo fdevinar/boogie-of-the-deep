@@ -13,6 +13,7 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
     return (
         <div className="room-view">
             <h2>{room}</h2>
+            {rooms[room].image && <img src={rooms[room].image} alt="Room Image" className='room-image' />}        
             <p className="text">{rooms[room].text}</p>
             {rooms[room].comment && <p className="comment">{rooms[room].comment}</p>}
             <div className="choices">
@@ -29,7 +30,7 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
                 .map(choice =>
                     <button key={choice.label} className={choice.action.toLowerCase()}
                         onClick={()=>onChoiceSelect(choice)}>{choice.label}
-                    </button>                    
+                    </button>                                        
                 ):'☠️ You arrived at a dead end...'}
             </div>
             {message && <p className="message">{message}</p>}
