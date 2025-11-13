@@ -1,5 +1,5 @@
 
-import { MOVE, PICKUP, SANITY_CHANGE, DICE, RESET } from "./actions";
+import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./actions";
 import { getInitialState } from "./initialState";
 
 export function reducer(state,action) {    
@@ -16,11 +16,15 @@ export function reducer(state,action) {
             case SANITY_CHANGE:
                 return {...state,                    
                     sanity: state.sanity + action.delta
-                }                                                
-            case DICE:
+                }                
+            case EVENT:
                 return {...state,
-                    dice: [...state.dice, action.result]
-                }    
+                    events: [...state.events, action.trigger]
+                }
+            // case DICE:
+            //     return {...state,
+            //         dice: [...state.dice, action.result]
+            //     }    
             case RESET:
                 return getInitialState();
             default:

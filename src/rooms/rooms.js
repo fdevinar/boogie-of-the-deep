@@ -19,6 +19,11 @@ const rooms =
     "Lobby": {
         text: "The lobby is quiet, maybe too quiet",
         comment: "You start to doubt yourself",
+        "choices": [
+            {"label": "Play the piano", "action": "EVENT", "target": "playedPiano", 
+            "effect": {sanity: 10}, "message": "You hear an inspiring tune, a passage has opened" },
+            {"label": "Use the passage", "action": "MOVE", "target": "Forecastle", "conditions": {has:['playedPiano']}}
+        ]
     },
     "Store Room": {
         text: "The store room reeks of stale air and bad memories",

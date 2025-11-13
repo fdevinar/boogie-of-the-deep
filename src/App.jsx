@@ -1,7 +1,7 @@
 
 import { useReducer, useState } from 'react'
 import './App.css'
-import { MOVE, PICKUP, SANITY_CHANGE, DICE, RESET } from "./core/actions"
+import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
 import { getInitialState } from './core/initialState'
 import HudBar from './features/hud/HudBar'
@@ -35,6 +35,9 @@ function App() {
       case PICKUP : 
         dispatch({type: PICKUP, item: choice.target});
         break;
+      case EVENT : 
+        dispatch({type: EVENT, trigger: choice.target});
+        break;
       default :
         break;
     }
@@ -48,6 +51,7 @@ function App() {
       <RoomView
           room={state.room}
           inventory={state.inventory}          
+          events={state.events}
           message={messageToast}
           onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
       >
