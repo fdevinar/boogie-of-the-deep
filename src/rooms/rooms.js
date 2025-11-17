@@ -25,7 +25,15 @@ const rooms =
         choices: [
             {label: "Play the piano", action: "EVENT", target: "playedPiano", 
             effect: {sanity: 10}, message: "You hear an inspiring tune, a passage has opened" },
-            {label: "Use the passage", action: "MOVE", target: "Forecastle", conditions: {has:['playedPiano']}}
+            {label: "Use the passage", action: "MOVE", target: "Command Deck", conditions: {has:['playedPiano']}}
+        ]
+    },
+    "Command Deck": {
+        text: "The command deck, old and twisted, final destination of our trip",
+        comment: "You see a stack of papers, you can try reading them",
+        image: "src/assets/command-deck.png",
+        choices: [
+            {label: "Try to read the papers", action: "DICE", target: 30,}
         ]
     },
     "Store Room": {

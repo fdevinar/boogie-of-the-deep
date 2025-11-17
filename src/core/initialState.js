@@ -5,7 +5,7 @@ export function getInitialState () {
         inventory: [],
         sanity: 100,
         events: [],
-        // dice: [],
+        dice: [],
         room: "Forecastle"
     }
 }

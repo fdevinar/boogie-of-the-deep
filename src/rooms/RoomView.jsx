@@ -8,7 +8,6 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
     // useEffect(() => {
     //     console.log(rooms[room].choices);
     // })
-    console.log(events);
         
     return (
         <div className="room-view">

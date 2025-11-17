@@ -14,8 +14,9 @@ function App() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   const [messageToast, setMessageToast] = useState('');
   
+  console.log(state);
+
   function handleChoiceSelect(choice) {
-    // console.log(choice);
     
     // MESSAGE TOAST -> YELLOW FEEDBACK AFTER ACTION
     setMessageToast('');
@@ -37,6 +38,9 @@ function App() {
         break;
       case EVENT : 
         dispatch({type: EVENT, trigger: choice.target});
+        break;
+      case DICE : 
+        dispatch({type: DICE, odds: choice.target});
         break;
       default :
         break;
