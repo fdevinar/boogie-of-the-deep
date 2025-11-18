@@ -6,6 +6,7 @@ import { reducer } from './core/reducer'
 import { getInitialState } from './core/initialState'
 import HudBar from './features/hud/HudBar'
 import RoomView from './rooms/RoomView'
+import { checkResult } from './utils/dice-roll'
 
 
 function App() {
@@ -14,8 +15,6 @@ function App() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   const [messageToast, setMessageToast] = useState('');
   
-  console.log(state);
-
   function handleChoiceSelect(choice) {
     
     // MESSAGE TOAST -> YELLOW FEEDBACK AFTER ACTION
@@ -26,21 +25,24 @@ function App() {
     // IF ANY EFFECT IS APPLIED
     if (choice.effect) {
       if (choice.effect.sanity) {
-        dispatch({type: SANITY_CHANGE, delta: choice.effect.sanity});
+        dispatch( {type: SANITY_CHANGE, delta: choice.effect.sanity} );
       }
     }
     switch (choice.action) { 
       case MOVE : 
-        dispatch({type: MOVE, room: choice.target});
+        dispatch( {type: MOVE, room: choice.target} );
         break;
       case PICKUP : 
-        dispatch({type: PICKUP, item: choice.target});
+        dispatch( {type: PICKUP, item: choice.target} );
         break;
       case EVENT : 
-        dispatch({type: EVENT, trigger: choice.target});
+        dispatch( {type: EVENT, trigger: choice.target} );
         break;
-      case DICE : 
-        dispatch({type: DICE, odds: choice.target});
+      case DICE : {
+        const result = checkResult(choice.target);
+        dispatch( {type: DICE, outcome: result ? choice.success : choice.fail} );
+        result ? setMessageToast(choice.success.message) : setMessageToast(choice.fail.message);        
+      }
         break;
       default :
         break;

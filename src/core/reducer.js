@@ -22,10 +22,13 @@ export function reducer(state,action) {
                 return {...state,
                     events: [...state.events, action.trigger]
                 }
-            case DICE:
-                return {...state,
-                    dice: [...state.dice, action.odds]
-                }
+            case DICE:                                 
+                return {...state,                        
+                    sanity: state.sanity + ( action.outcome.effect?.sanity || 0 ),
+                    events: action.outcome.event
+                    ? [...state.events, action.outcome.event]
+                    : state.events,
+                }                
             case RESET:
                 return getInitialState();
             default:

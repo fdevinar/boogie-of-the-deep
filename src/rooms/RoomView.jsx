@@ -5,9 +5,9 @@ import rooms from "./rooms"
 export default function RoomView({ room, inventory, events, message, onChoiceSelect,  }) {
 
     // DEBUG CHOICES
-    // useEffect(() => {
-    //     console.log(rooms[room].choices);
-    // })
+    useEffect(() => {
+        console.log(rooms[room].choices);
+    })
         
     return (
         <div className="room-view">
@@ -21,10 +21,11 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
                 .filter( (choice) => choice.action != 'PICKUP' ||  !inventory.includes(choice.target) )
                 // FILTER OUT COMPLETED EVENTS
                 .filter( (choice) => choice.action != 'EVENT' ||  !events.includes(choice.target) )
-                // CHECK IF CONDITIONS ARE MET (INVENTORY AND EVENTS)               
-                .filter( (choice) => !choice.conditions || 
-                    (choice.conditions.has.every(el => inventory.includes(el)) || choice.conditions.has.every(el => events.includes(el)) )
-                )                
+                // CHECK IF CONDITIONS ARE MET                                
+                .filter( (choice) => !choice.conditions || (choice.conditions.has.every(el => inventory.includes(el))) )
+                .filter( (choice) => !choice.conditions || (choice.conditions.hasNot.every(el => !events.includes(el))) )                
+                .filter( (choice) => !choice.conditions || (choice.conditions.events.every(el => events.includes(el))) )
+                .filter( (choice) => !choice.conditions || (choice.conditions.eventsNot.every(el => !events.includes(el))) )                            
                 // MAP ALL CHOICES
                 .map(choice =>
                     <button key={choice.label} className={choice.action.toLowerCase()}

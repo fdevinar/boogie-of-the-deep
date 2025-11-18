@@ -121,6 +121,14 @@ p.dev-pride {
       box-shadow: 0 0 4px rgba(255,210,100,0.3);
     }
   }
+  &.dice {
+    background-color: lightgray;
+    border: 1px solid #2f261c;
+    color: darkblue;
+    &:hover {
+      box-shadow: 0 0 4px rgba(255,210,100,0.3);
+    }
+  }
 }
 
 /* TEXT */
