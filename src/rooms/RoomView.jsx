@@ -1,6 +1,8 @@
 
 import { useEffect } from 'react'
 import rooms from "./rooms"
+// PRELOAD IMAGES
+Object.values(rooms).forEach(room => new Image().src = room.image);
 
 export default function RoomView({ room, inventory, events, message, onChoiceSelect,  }) {
 
@@ -12,7 +14,7 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
     return (
         <div className="room-view">
             <h2>{room}</h2>
-            {rooms[room].image && <img src={rooms[room].image} alt="Room Image" className='room-image' />}        
+            {rooms[room].image && <img key={rooms[room].image} src={rooms[room].image} alt="Room Image" className='room-image' />}        
             <p className="text">{rooms[room].text}</p>
             {rooms[room].comment && <p className="comment">{rooms[room].comment}</p>}
             <div className="choices">
