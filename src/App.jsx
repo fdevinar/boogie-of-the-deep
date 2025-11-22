@@ -51,7 +51,9 @@ function App() {
 
   return (
     <>
-      <h1 onClick={()=>dispatch({type: RESET})}>BOOGIE OF THE DEEP</h1>
+      <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
+        BOOGIE OF THE DEEP
+      </h1>
       {/* SS BRUIT 1920 */}
 
       <RoomView

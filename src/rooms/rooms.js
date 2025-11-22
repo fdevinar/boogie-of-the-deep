@@ -25,7 +25,8 @@ const rooms =
         choices: [
             {label: "Play the piano", action: "EVENT", target: "playedPiano", 
             effect: {sanity: 10}, message: "You hear an inspiring tune, a passage has opened" },
-            {label: "Use the passage", action: "MOVE", target: "Command Deck", conditions: {has:[],hasNot:[],events:['playedPiano'],eventsNot:[]}}
+            {label: "Use the passage", action: "MOVE", target: "Command Deck", 
+            conditions: {has:[],hasNot:[],events:['playedPiano'],eventsNot:[]}},
         ]
     },
     "Command Deck": {
@@ -33,9 +34,10 @@ const rooms =
         comment: "You see a stack of papers, you can try reading them",
         image: "src/assets/command-deck.png",
         choices: [
-            {label: "Try to read the papers", action: "DICE", target: 70, conditions: {has:[],hasNot:[],events:[],eventsNot:['readPapers']},
+            {label: "Try to read the papers", action: "DICE", target: 70,
             success: { message: "You were able to read", effect: {sanity: 20}, event: 'readPapers'},  
-            fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'}},
+            fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'}
+            conditions: {has:[],hasNot:[],events:[],eventsNot:['readPapers']},},
         ]
     },
     "Store Room": {
@@ -54,8 +56,8 @@ const rooms =
         comment: "You could use a tool to open a passage to another room",
         choices: [
             {label: "Go to Boiler Room", action: "MOVE", target: "Boiler Room",
-                conditions: {has:['Wrench'],hasNot:[],events:[],eventsNot:[]},
-                message: "You used the Wrench to open a passage to the Boiler Room",
+            message: "You used the Wrench to open a passage to the Boiler Room",
+            conditions: {has:['Wrench'],hasNot:[],events:[],eventsNot:[]},
             },
         ]
     },

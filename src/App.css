@@ -2,7 +2,7 @@
   max-width: 900px;
   height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -26,7 +26,7 @@ p.dev-pride {
   flex-direction: column;
   gap: 24px;
   padding: 8px 12px;
-  margin: 24px;
+  margin: 12px;
   border-radius: 12px;
   background: linear-gradient(180deg, #0e1013 0%, #1a1e23 100%);
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -56,7 +56,7 @@ p.dev-pride {
 
 /* ROOM VIEW */
 .room-view {
-  margin: 24px;
+  margin: 12px;
   padding: 16px;
   border: 1px solid #FFF;
   border-radius: 32px;
