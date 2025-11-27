@@ -155,3 +155,23 @@ p.dev-pride {
   text-shadow: 0 0 3px rgba(155,179,197,0.25);
   margin: 12px 12px 24px;
 }
+
+/* CINEMA MODAL */
+.modal-image {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-image button {
+  position: fixed;
+  top: 24px;
+  right: 48px;
+}

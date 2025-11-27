@@ -1,11 +1,12 @@
 
-import { useReducer, useState } from 'react'
+import { useReducer, useState, useEffect } from 'react'
 import './App.css'
 import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
 import { getInitialState } from './core/initialState'
 import HudBar from './features/hud/HudBar'
 import RoomView from './rooms/RoomView'
+import CinemaModal from './ui/CinemaModal'
 import { checkResult } from './utils/dice-roll'
 
 
@@ -14,6 +15,15 @@ function App() {
   // using reducer initializer - undefined here means -> no preloaded state
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   const [messageToast, setMessageToast] = useState('');
+  const [cinemaModalImage, setCinemaModalImage] = useState('');
+
+    useEffect(()=> {
+      if (state.room === 'Windlock Passage') {
+        setCinemaModalImage('src/assets/windlock-passage.png');
+      } else {
+        setCinemaModalImage('');
+      }
+    },[state.room])
   
   function handleChoiceSelect(choice) {
     
@@ -64,7 +74,15 @@ function App() {
           onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
       >
       </RoomView>
+      
       <HudBar state={state}></HudBar>
+      
+      {cinemaModalImage && 
+      <CinemaModal
+          image={cinemaModalImage}
+          onClose={()=>setCinemaModalImage('')}>
+      </CinemaModal>
+      }
 
       <p className="dev-pride">Build v0.1</p>
    
