@@ -7,9 +7,9 @@ Object.values(rooms).forEach(room => new Image().src = room.image);
 export default function RoomView({ room, inventory, events, message, onChoiceSelect,  }) {
 
     // DEBUG CHOICES
-    useEffect(() => {
-        console.log(rooms[room].choices);
-    })
+    // useEffect(() => {
+    //     console.log(rooms[room].choices);
+    // })
         
     return (
         <div className="room-view">

@@ -4,11 +4,11 @@ import './App.css'
 import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
 import { getInitialState } from './core/initialState'
-import HudBar from './features/hud/HudBar'
+import HudBar from './ui/HudBar'
 import RoomView from './rooms/RoomView'
 import CinemaModal from './ui/CinemaModal'
 import { checkResult } from './utils/dice-roll'
-
+import { cinemaDirector } from './ui/cinemaDirector'
 
 function App() {
 
@@ -16,13 +16,13 @@ function App() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   const [messageToast, setMessageToast] = useState('');
   const [cinemaModalImage, setCinemaModalImage] = useState('');
+  const cinemaScript = cinemaDirector();
 
-    useEffect(()=> {
-      if (state.room === 'Windlock Passage') {
-        setCinemaModalImage('src/assets/windlock-passage.png');
-      } else {
-        setCinemaModalImage('');
-      }
+    useEffect(()=> {      
+      // DISPLAY CINEMA MODAL ON ROOM CHANGE
+      cinemaScript[state.room]
+        ? setCinemaModalImage(cinemaScript[state.room]) 
+        : setCinemaModalImage('');
     },[state.room])
   
   function handleChoiceSelect(choice) {

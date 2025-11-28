@@ -1,7 +1,6 @@
 
 import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./actions";
 import { getInitialState } from "./initialState";
-import { checkResult } from "../utils/dice-roll";
 
 export function reducer(state,action) {    
         switch (action.type) {

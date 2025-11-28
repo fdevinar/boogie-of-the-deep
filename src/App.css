@@ -164,11 +164,14 @@ p.dev-pride {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: #111;
 }
 .modal-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: fadeIn 1200ms ease-in-out;
+
 }
 .modal-image button {
   position: fixed;
