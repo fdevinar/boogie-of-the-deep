@@ -170,11 +170,30 @@ p.dev-pride {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: fadeIn 1200ms ease-in-out;
-
+  animation: fadeIn 1s ease-in-out, pulse 5s infinite 1s;
 }
+@keyframes pulse {  
+  0% {filter: brightness(1.0);}
+  50% {filter: brightness(0.7);}
+  100% {filter: brightness(1.0);}
+}
+
+
+
+
 .modal-image button {
   position: fixed;
   top: 24px;
   right: 48px;
+}
+.modal-image .caption {
+    position: fixed;
+    bottom: 100px;
+    left: 180px;
+    color: yellow;
+    background-color: black;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 24px;
+    opacity: 0.8;
 }

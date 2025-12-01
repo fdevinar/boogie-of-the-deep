@@ -16,13 +16,18 @@ function App() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   const [messageToast, setMessageToast] = useState('');
   const [cinemaModalImage, setCinemaModalImage] = useState('');
+  const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
 
-    useEffect(()=> {      
+    useEffect(()=> {            
       // DISPLAY CINEMA MODAL ON ROOM CHANGE
-      cinemaScript[state.room]
-        ? setCinemaModalImage(cinemaScript[state.room]) 
-        : setCinemaModalImage('');
+      if (cinemaScript[state.room]) {
+        setCinemaModalImage(cinemaScript[state.room].image);
+        setCinemaModalCaption(cinemaScript[state.room].caption);
+      } else {
+        setCinemaModalImage('');
+        setCinemaModalCaption('');
+      }      
     },[state.room])
   
   function handleChoiceSelect(choice) {
@@ -80,6 +85,7 @@ function App() {
       {cinemaModalImage && 
       <CinemaModal
           image={cinemaModalImage}
+          caption={cinemaModalCaption}
           onClose={()=>setCinemaModalImage('')}>
       </CinemaModal>
       }
