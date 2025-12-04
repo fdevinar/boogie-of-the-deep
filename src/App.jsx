@@ -9,6 +9,7 @@ import RoomView from './rooms/RoomView'
 import CinemaModal from './ui/CinemaModal'
 import { checkResult } from './utils/dice-roll'
 import { cinemaDirector } from './ui/cinemaDirector'
+import { sanityTable } from './utils/sanity-table'
 
 function App() {
 
@@ -66,32 +67,35 @@ function App() {
 
   return (
     <>
-      <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
-        BOOGIE OF THE DEEP
-      </h1>
-      {/* SS BRUIT 1920 */}
+      <main class={sanityTable(state.sanity)}>
 
-      <RoomView
-          room={state.room}
-          inventory={state.inventory}          
-          events={state.events}
-          message={messageToast}
-          onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
-      >
-      </RoomView>
-      
-      <HudBar state={state}></HudBar>
-      
-      {cinemaModalImage && 
-      <CinemaModal
-          image={cinemaModalImage}
-          caption={cinemaModalCaption}
-          onClose={()=>setCinemaModalImage('')}>
-      </CinemaModal>
-      }
+        <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
+          BOOGIE OF THE DEEP
+        </h1>
+        {/* SS BRUIT 1920 */}
 
-      <p className="dev-pride">Build v0.1</p>
+        <RoomView
+            room={state.room}
+            inventory={state.inventory}          
+            events={state.events}
+            message={messageToast}
+            onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
+        >
+        </RoomView>
+        
+        <HudBar state={state}></HudBar>
+        
+        {cinemaModalImage && 
+        <CinemaModal
+            image={cinemaModalImage}
+            caption={cinemaModalCaption}
+            onClose={()=>setCinemaModalImage('')}>
+        </CinemaModal>
+        }
+
+        <p className="dev-pride">Build v0.1</p>
    
+      </main>
     </>
   )
 }

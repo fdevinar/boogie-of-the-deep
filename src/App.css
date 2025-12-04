@@ -4,20 +4,34 @@
   margin: 0 auto;
   padding: 1rem;
 }
-
 h1 {
   font-size: 24px;
   font-weight: 600;
   color: #1c0333;
   text-shadow: 1px 1px #FFF;
 }
-
 p.dev-pride {
   position: absolute;
   right: 12px;
   bottom: 12px;
 }
+main {
+  padding: 24px;
+  border-radius: 48px;
+  &.stable {
+    background-color: #111;
+  }
+  &.unstable {
+    background-color: grey;
+  }
+  &.broken {
+    background-color: purple;
+  }
+  &.abyss {
+    background-color: crimson;
+  }
 
+}
 
 
 /* HUD */
