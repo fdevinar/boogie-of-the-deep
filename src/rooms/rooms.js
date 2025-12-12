@@ -54,8 +54,7 @@ const rooms =
         image: "src/assets/engine-room.png",
         comment: "This room is so hot...",
         choices: [
-            {label: "Go to Boiler Room", action: "MOVE", target: "Boiler Room",
-            // message: "You used the Wrench to open a passage to the Boiler Room",
+            {label: "Go to Boiler Room", action: "MOVE", target: "Boiler Room",            
             conditions: {has:[],hasNot:[],events:['playedPiano'],eventsNot:[]},
             },
         ]

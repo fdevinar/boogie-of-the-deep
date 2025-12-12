@@ -67,7 +67,7 @@ function App() {
 
   return (
     <>
-      <main class={sanityTable(state.sanity)}>
+      <main className={sanityTable(state.sanity)}>
 
         <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
           BOOGIE OF THE DEEP
