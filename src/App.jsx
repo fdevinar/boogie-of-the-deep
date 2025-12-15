@@ -10,6 +10,7 @@ import CinemaModal from './ui/CinemaModal'
 import { checkResult } from './utils/dice-roll'
 import { cinemaDirector } from './ui/cinemaDirector'
 import { sanityTable } from './utils/sanity-table'
+import sounds from './utils/soundDirector'
 
 function App() {
 
@@ -20,7 +21,11 @@ function App() {
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
 
+  const { playWaves } = sounds();
+
+
     useEffect(()=> {            
+      playWaves();
       // DISPLAY CINEMA MODAL ON ROOM CHANGE
       if (cinemaScript[state.room]) {
         setCinemaModalImage(cinemaScript[state.room].image);
