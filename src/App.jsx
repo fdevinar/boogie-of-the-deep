@@ -21,11 +21,18 @@ function App() {
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
 
-  const { playWaves } = sounds();
+  const { playWaves, playSteam } = sounds();
 
+    const soundScript = {
+      'Windlock Passage': ()=> playWaves(),
+      'Engine Room': ()=> playSteam(),
+    }
 
     useEffect(()=> {            
-      playWaves();
+      // PLAY AUDIO ON ROOM CHANGE
+      if (soundScript[state.room]) {
+        soundScript[state.room]();
+      }
       // DISPLAY CINEMA MODAL ON ROOM CHANGE
       if (cinemaScript[state.room]) {
         setCinemaModalImage(cinemaScript[state.room].image);
