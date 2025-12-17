@@ -26,7 +26,7 @@ const rooms =
             
             {label: "Go to Dining Room", action: "MOVE", target: "Dining Room"},
             
-            {label: "Go to Captain's Quarters", action: "MOVE", target: "Captain's Quarters",
+            {label: "Go to Captain's Quarters", action: "MOVE", target: "Captains Quarters",
             conditions: {has:['Octopus Crest'],hasNot:[],events:[],eventsNot:[]}},
             
             {label: "Play the piano", action: "EVENT", target: "playedPiano", 
@@ -90,7 +90,7 @@ const rooms =
         ]
     },
     // MEMORY PATH
-    "Captain's Quarters": {
+    "Captains Quarters": {
         text: "Cap'n Quarters",
         comment: "You are in the captains quarters",
         image: "src/assets/images/captains-quarters.png",           

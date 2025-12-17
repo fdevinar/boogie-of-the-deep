@@ -21,12 +21,13 @@ function App() {
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
 
-  const { playWaves, playSteam } = sounds();
-
-    const soundScript = {
-      'Windlock Passage': ()=> playWaves(),
-      'Engine Room': ()=> playSteam(),
-    }
+  const { playWaves, playSteam, playReveal, playWind } = sounds();
+  const soundScript = {  
+    'Windlock Passage': ()=> playWaves(),
+    'Engine Room': ()=> playSteam(),
+    'Nightwatch Gallery': ()=> playReveal(),
+    'Captains Quarters': ()=> playWind(),
+  }
 
     useEffect(()=> {            
       // PLAY AUDIO ON ROOM CHANGE
