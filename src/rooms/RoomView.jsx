@@ -21,7 +21,7 @@ export default function RoomView({ room, inventory, events, message, onChoiceSel
         .filter( (choice) => !choice.conditions || (choice.conditions.events.every(el => events.includes(el))) )
         .filter( (choice) => !choice.conditions || (choice.conditions.eventsNot.every(el => !events.includes(el))) )
                         
-    const resetBtn = {label: "Close your eyes", action: "MOVE", target: "Forecastle",
+    const resetBtn = {label: "You hit a dead end... Close your eyes.", action: "MOVE", target: "Forecastle",
                     message: "You find yourself back at the forecastle, somehow...",
                     effect: {sanity: -15},}
 

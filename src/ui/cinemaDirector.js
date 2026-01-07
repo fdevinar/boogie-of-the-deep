@@ -7,6 +7,11 @@ export function cinemaDirector () {
         "Lobby": {
             image: "src/assets/images/lobby.png",
             caption: "The lobby is surprisingly big, the air isn't as stale as you expected. The many connecting rooms give it a semblance of life inside an apparently dead ship."
-        }
+        },
+        "Nightwatch Gallery" : {
+            image: "src/assets/images/nightwatch-gallery.png",
+            caption: "You feel emboldened by the presence of the ship's previous captains, and at the same time judged and pressured by their gaze."
+        },
+
     }
 }

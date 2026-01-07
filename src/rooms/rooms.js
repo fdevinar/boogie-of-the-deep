@@ -30,7 +30,7 @@ const rooms =
             {label: "Go to Captain's Quarters", action: "MOVE", target: "Captains Quarters",
             conditions: {has:['Octopus Crest'],hasNot:[],events:[],eventsNot:[]}},
             
-            {label: "Play the piano", action: "EVENT", target: "playedPiano", 
+            {label: "Play the piano 😌", action: "EVENT", target: "playedPiano", 
             effect: {sanity: 10}, message: "You hear an inspiring tune, something moved in the ship" },
         ]
     },
@@ -67,18 +67,18 @@ const rooms =
         image: "src/assets/images/boiler-room.png",
         choices: [
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
-            {label: "Pickup the Wrench", action: "PICKUP", target: "Wrench",
+            {label: "Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench",
              message: "You pick up the Wrench."},
-
-        ]   
+            ]   
+    //TODO HARD EVENT DICE
     },
     // REVELATION PATH
     "Dining Room": {
-        text: "A ghoulish banquet has been held here aeons ago",
-        comment: "You're not sure moving to the next room is a good thing.",
+        text: "A ghoulish banquet has been held here aeons ago, how come the stench of bodies long dead still infest the room?",
+        comment: "You should muster every fiber of your being to move forward",
         image: "src/assets/images/dining-room.png",           
         choices: [
-            {label: "Go to Nightwatch Gallery", action: "MOVE", target: "Nightwatch Gallery", effect: {sanity: -20},},
+            {label: "Go to Nightwatch Gallery 😵", action: "MOVE", target: "Nightwatch Gallery", effect: {sanity: -20},},
         ]
     },
     "Nightwatch Gallery": {
@@ -86,11 +86,12 @@ const rooms =
         comment: "You could use a tool to open a passage",
         image: "src/assets/images/nightwatch-gallery.png",           
         choices: [
-            {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",
+            {label: "Use the Wrench 🔧 to force yourself into the Command Deck", action: "MOVE", target: "Command Deck",
             conditions: {has:['Wrench'],hasNot:[],events:[],eventsNot:[]},
             message: "You used the wrench to open the passage",
         },
         ]
+        //TODO HARD EVENT DICE
     },
     // MEMORY PATH
     "Captains Quarters": {
@@ -110,6 +111,8 @@ const rooms =
         choices: [
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
         ]
+        //TODO HARD EVENT DICE
+
     },
     // FINAL DESTINATION
     "Command Deck": {
