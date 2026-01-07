@@ -1,7 +1,7 @@
 
 export function getInitialState () {
     return {
-        steps: 8,
+        steps: 16,
         inventory: [],
         sanity: 100,
         events: [],

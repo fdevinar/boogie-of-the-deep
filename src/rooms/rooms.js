@@ -3,14 +3,15 @@ const rooms =
 
 {
     "Forecastle": {
-        text: "You arrive at the forecastle, you feel this ships holds misteries.",     
+        text: "You arrive at the ship's forecastle, this ships holds misteries.",    
+        comment: "A bulky steel door invites you in.", 
         image: "src/assets/images/forecastle.png",   
         choices: [
             {label: "Go to Windlock Passage", action: "MOVE", target: "Windlock Passage",},
         ]           
     },
     "Windlock Passage": {
-        text: "You arrive at the windlock passage.",     
+        text: "There's only a single metal door leading you on, you have no choice but to move forward.",     
         image: "src/assets/images/windlock-passage.png",   
         choices: [
             {label: "Go to Lobby", action: "MOVE", target: "Lobby",},
@@ -18,8 +19,8 @@ const rooms =
     },
     // CROSSROADS
     "Lobby": {
-        text: "The lobby is quiet, maybe too quiet",
-        comment: "You start to doubt yourself",
+        text: "There's a piano in the corner of the room and two major ways forward. You feel like more ways out could be hidden.",
+        comment: "The lobby is quiet, maybe too quiet.",
         image: "src/assets/images/lobby.png",
         choices: [
             {label: "Go to Store Room", action: "MOVE", target: "Store Room"},
@@ -40,7 +41,8 @@ const rooms =
 
     // MECHANICAL PATH
     "Store Room": {
-        text: "The store room reeks of stale air and bad memories",
+        text: "The air reeks of pale ale and bad memories.",
+        comment: "Rats and bats abound.",
         image: "src/assets/images/store-room.png",
         choices: [
             {label: "Go to Engine Room", action: "MOVE", target: "Engine Room"},
@@ -50,9 +52,9 @@ const rooms =
         ]
     },
     "Engine Room": {
-        text: "The hum of the machines, a perfect mix of chaos, steam and steel...",
+        text: "The hum of the machines, a perfect mix of chaos, steam and steel.",
+        comment: "Temperature rising, sweating bullets, cold dead bullets...",
         image: "src/assets/images/engine-room.png",
-        comment: "This room is so hot...",
         choices: [
             {label: "Go to Boiler Room", action: "MOVE", target: "Boiler Room",            
             conditions: {has:[],hasNot:[],events:['playedPiano'],eventsNot:[]},
@@ -60,7 +62,8 @@ const rooms =
         ]
     },
     "Boiler Room": {
-        text: "The heart of the ship...",
+        text: "You arrive at the heart of the ship, but your blood is boiling to the max.",
+        comment: "You could reach the Command Deck from here, is your blood enough to make the best of this chance?",
         image: "src/assets/images/boiler-room.png",
         choices: [
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
@@ -91,8 +94,8 @@ const rooms =
     },
     // MEMORY PATH
     "Captains Quarters": {
-        text: "Cap'n Quarters",
-        comment: "You are in the captains quarters",
+        text: "You're in the captains quarters",
+        comment: "There's a slot in the shape of an octopuss in the wall",
         image: "src/assets/images/captains-quarters.png",           
         choices: [
             {label: "Go to Secret Room", action: "MOVE", target: "Secret Room", 
