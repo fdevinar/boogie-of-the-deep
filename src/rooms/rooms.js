@@ -69,6 +69,10 @@ const rooms =
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
             {label: "Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench",
              message: "You pick up the Wrench."},
+            // {label: "Activate the Boiler (HARD)", action: "DICE", target: 5,
+            // success: { message: "You activated the Boiler", effect: {sanity: 20}, event: 'boilerActivated'},            
+            // fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'}
+            // conditions: {has:[],hasNot:[],events:[],eventsNot:['readPapers']}, },
             ]   
     //TODO HARD EVENT DICE
     },

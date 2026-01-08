@@ -29,12 +29,13 @@ function App() {
     'Captains Quarters': ()=> playWind(),
   }
 
+    // ON ROOM CHANGE
     useEffect(()=> {            
-      // PLAY AUDIO ON ROOM CHANGE
+      // PLAY AUDIO
       if (soundScript[state.room]) {
         soundScript[state.room]();
       }
-      // DISPLAY CINEMA MODAL ON ROOM CHANGE
+      // DISPLAY CINEMA MODAL
       if (cinemaScript[state.room]) {
         setCinemaModalImage(cinemaScript[state.room].image);
         setCinemaModalCaption(cinemaScript[state.room].caption);
@@ -44,6 +45,18 @@ function App() {
       }      
     },[state.room])
   
+    // CHECK FOR STEP/SANITY BOUNDARIES
+    useEffect(()=> {      
+      if (state.steps <= 0) {
+        console.log('GAME OVER: steps');
+      }
+    },[state.steps])
+    useEffect(()=> {
+      if (state.sanity <=-20) {
+        console.log('GAME OVER: sanity');
+      }
+    })
+
   function handleChoiceSelect(choice) {
     
     // MESSAGE TOAST -> YELLOW FEEDBACK AFTER ACTION
