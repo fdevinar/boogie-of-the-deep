@@ -46,16 +46,24 @@ function App() {
     },[state.room])
   
     // CHECK FOR STEP/SANITY BOUNDARIES
-    useEffect(()=> {      
+    useEffect(()=> {
       if (state.steps <= 0) {
-        console.log('GAME OVER: steps');
+        setCinemaModalImage(cinemaScript['Steps Ending'].image);
+        setCinemaModalCaption(cinemaScript['Steps Ending'].caption);
+        setTimeout(function() {
+          dispatch({type: RESET});
+        }, 7000);
       }
     },[state.steps])
     useEffect(()=> {
       if (state.sanity <=-20) {
-        console.log('GAME OVER: sanity');
+        setCinemaModalImage(cinemaScript['Sanity Ending'].image);
+        setCinemaModalCaption(cinemaScript['Sanity Ending'].caption);
+        setTimeout(function() {
+          dispatch({type: RESET});
+        }, 7000);
       }
-    })
+    },[state.sanity])
 
   function handleChoiceSelect(choice) {
     

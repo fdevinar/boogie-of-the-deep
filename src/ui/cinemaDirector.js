@@ -13,5 +13,16 @@ export function cinemaDirector () {
             caption: "You feel emboldened by the presence of the ship's previous captains, and at the same time judged and pressured by their gaze."
         },
 
+        // ENDINGS
+        "Sanity Ending" : {
+            image: "src/assets/images/ending-sanity.png",
+            caption: "The ship is now part of you, you don't care what else happens, as long as you keep playing the boogie from the deep..."
+        },
+        "Steps Ending" : {
+            image: "src/assets/images/ending-steps.png",
+            caption: "The unreachable door at the never ending corridor, a distant and fleeting goal you may never reach...."
+        },
+
+
     }
 }
