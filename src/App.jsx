@@ -43,6 +43,11 @@ function App() {
         setCinemaModalImage('');
         setCinemaModalCaption('');
       }      
+      // COMMAND DECK - CHECK FOR ENDINGS
+      if (state.room === 'Command Deck') {
+        //TODO check for endings (events) and display them
+      }
+
     },[state.room])
   
     // CHECK FOR STEP/SANITY BOUNDARIES
@@ -63,7 +68,7 @@ function App() {
           dispatch({type: RESET});
         }, 7000);
       }
-    },[state.sanity])
+    },[state.sanity])    
 
   function handleChoiceSelect(choice) {
     

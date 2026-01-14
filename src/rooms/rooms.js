@@ -68,13 +68,12 @@ const rooms =
         choices: [
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
             {label: "Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench", message: "You pick up the Wrench."},
-            {label: "Activate the Boiler (HARD)", action: "DICE", target: 5,
+            //HARD EVENT
+            {label: "Activate the Boiler (HARD)", action: "DICE", target: 50,
             success: { message: "You activated the Boiler", effect: {sanity: 20}, event: 'boilerActivated'},            
-            fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'},
-            // conditions: {has:[],hasNot:[],events:[],eventsNot:['readPapers']}, 
-            },
+            fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notBoilerActivated'},
+            conditions: {has:[],hasNot:[],events:[],eventsNot:['boilerActivated']}, },
             ]   
-    //TODO HARD EVENT DICE
     },
     // REVELATION PATH
     "Dining Room": {
@@ -92,14 +91,17 @@ const rooms =
         choices: [
             {label: "Use the Wrench 🔧 to force yourself into the Command Deck", action: "MOVE", target: "Command Deck",
             conditions: {has:['Wrench'],hasNot:[],events:[],eventsNot:[]},
-            message: "You used the wrench to open the passage",
-        },
+            message: "You used the wrench to open the passage",},
+            // HARD EVENT
+            {label: "Talk to a painting (HARD)", action: "DICE", target: 50,
+            success: { message: "The painting answers back: 'Leave now or be forever cursed'", effect: {sanity: -20}, event: 'talkedPainting'},            
+            fail: { message: "You weren't able to read", effect: {sanity: -10}, event: 'notTalkedPainting'},
+            conditions: {has:[],hasNot:[],events:[],eventsNot:['talkedPainting']}, },
         ]
-        //TODO HARD EVENT DICE
     },
     // MEMORY PATH
     "Captains Quarters": {
-        text: "You're in the captains quarters",
+        text: "The captain's quarters smell like an oak bourbon barrel, they bring flashbacks of parties in the Dining Room and nights spent awake trying to decipher old tomes.",
         comment: "There's a slot in the shape of an octopuss in the wall",
         image: "src/assets/images/captains-quarters.png",           
         choices: [
@@ -109,13 +111,17 @@ const rooms =
         ]
     },
     "Secret Room": {
-        text: "You arrive at the Secret Room",
-        comment: "So much dark and gloom",
+        text: "This room has a perpetual lighted candle and a old book at the table",
+        comment: "The book is calling you...",
         image: "src/assets/images/secret-room.png",           
         choices: [
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
-        ]
-        //TODO HARD EVENT DICE
+            //HARD EVENT
+            {label: "Read the Necronomicon (HARD)", action: "DICE", target: 50,
+            success: { message: "Ymg' ah gn'th", effect: {sanity: -20}, event: 'readNecronomicon'},            
+            fail: { message: "You weren't able to read", effect: {sanity: -10}, event: 'notReadNecronomicon'},
+            conditions: {has:[],hasNot:[],events:[],eventsNot:['readNecronomicon']}, },
+        ]        
 
     },
     // FINAL DESTINATION
