@@ -70,10 +70,10 @@ const rooms =
             {label: "Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench", message: "You pick up the Wrench."},
             //HARD EVENT
             {label: "Activate the Boiler (HARD)", action: "DICE", target: 50,
-            success: { message: "You activated the Boiler", effect: {sanity: 20}, event: 'boilerActivated'},            
-            fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notBoilerActivated'},
-            conditions: {has:[],hasNot:[],events:[],eventsNot:['boilerActivated']}, },
-            ]   
+            success: { message: "You activated the Boiler 😌", effect: {sanity: 20}, event: 'activatedBoiler'},            
+            fail: { message: "You couldn't activate the Boiler 😵", effect: {sanity: -20}, event: 'notActivatedBoiler'},
+            conditions: {has:[],hasNot:[],events:[],eventsNot:['activatedBoiler']}, },
+      ]
     },
     // REVELATION PATH
     "Dining Room": {
@@ -94,8 +94,8 @@ const rooms =
             message: "You used the wrench to open the passage",},
             // HARD EVENT
             {label: "Talk to a painting (HARD)", action: "DICE", target: 50,
-            success: { message: "The painting answers back: 'Leave now or be forever cursed'", effect: {sanity: -20}, event: 'talkedPainting'},            
-            fail: { message: "You weren't able to read", effect: {sanity: -10}, event: 'notTalkedPainting'},
+            success: { message: "The painting answers back: 'Leave now or be forever cursed' 😵", effect: {sanity: -20}, event: 'talkedPainting'},            
+            fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notTalkedPainting'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['talkedPainting']}, },
         ]
     },
@@ -118,8 +118,8 @@ const rooms =
             {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
             //HARD EVENT
             {label: "Read the Necronomicon (HARD)", action: "DICE", target: 50,
-            success: { message: "Ymg' ah gn'th", effect: {sanity: -20}, event: 'readNecronomicon'},            
-            fail: { message: "You weren't able to read", effect: {sanity: -10}, event: 'notReadNecronomicon'},
+            success: { message: "Ymg' ah gn'th 😵", effect: {sanity: -20}, event: 'readNecronomicon'},            
+            fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notReadNecronomicon'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['readNecronomicon']}, },
         ]        
 

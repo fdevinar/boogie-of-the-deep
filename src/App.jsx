@@ -45,33 +45,40 @@ function App() {
       }      
       // COMMAND DECK - CHECK FOR ENDINGS
       if (state.room === 'Command Deck') {
-        //TODO check for endings (events) and display them
+        console.log(state.events);
+        // hard events: talkedPainting, readNecronomicon, activatedBoiler
+        if (state.events.includes('talkedPainting') && state.events.includes('readNecronomicon')  && state.events.includes('activatedBoiler') ) {          
+          displayEnding('Perfect Ending');
+        } else if (state.events.includes('readNecronomicon')) {
+          displayEnding('Secret Ending');          
+        } else if (state.events.includes('talkedPainting')) {
+          displayEnding('Good Ending');          
+        }
       }
-
     },[state.room])
   
     // CHECK FOR STEP/SANITY BOUNDARIES
     useEffect(()=> {
       if (state.steps <= 0) {
-        setCinemaModalImage(cinemaScript['Steps Ending'].image);
-        setCinemaModalCaption(cinemaScript['Steps Ending'].caption);
-        setTimeout(function() {
-          dispatch({type: RESET});
-        }, 7000);
+        displayEnding('Steps Ending');                
       }
     },[state.steps])
     useEffect(()=> {
       if (state.sanity <=-20) {
-        setCinemaModalImage(cinemaScript['Sanity Ending'].image);
-        setCinemaModalCaption(cinemaScript['Sanity Ending'].caption);
-        setTimeout(function() {
-          dispatch({type: RESET});
-        }, 7000);
+        displayEnding('Sanity Ending');                
       }
     },[state.sanity])    
 
-  function handleChoiceSelect(choice) {
-    
+  // CALLS ENDING
+  function displayEnding(type) {
+    setCinemaModalImage(cinemaScript[type].image);
+    setCinemaModalCaption(cinemaScript[type].caption);
+    setTimeout(function() {
+          dispatch({type: RESET});
+        }, 7000);
+  }
+
+  function handleChoiceSelect(choice) {    
     // MESSAGE TOAST -> YELLOW FEEDBACK AFTER ACTION
     setMessageToast('');
     if (choice.message) {

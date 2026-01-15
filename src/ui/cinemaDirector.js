@@ -20,7 +20,19 @@ export function cinemaDirector () {
         },
         "Steps Ending" : {
             image: "src/assets/images/ending-steps.png",
-            caption: "The unreachable door at the never ending corridor, a distant and fleeting goal you may never reach...."
+            caption: "The unreachable door at the never ending corridor, a distant and fleeting goal you may never reach..."
+        },
+        "Good Ending" : {
+            image: "src/assets/images/ending-leave.png",
+            caption: "The painting whispered a secret to you, you use the passcode to reach a boat and leave the ship... You feel like there are yet secrets to uncover, which you may never know now..."
+        },
+        "Secret Ending" : {
+            image: "src/assets/images/ending-captain.png",
+            caption: "You assume the position you were born to perform, guiding the Bruit forever and ever..."
+        },
+        "Perfect Ending" : {
+            image: "src/assets/images/ending-perfect.png",
+            caption: "The light opens a path, you fade away and leave the ship on it's way to a brigher future..."
         },
 
 
