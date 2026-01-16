@@ -7,14 +7,14 @@ const rooms =
         comment: "A bulky steel door invites you in.", 
         image: "src/assets/images/forecastle.png",   
         choices: [
-            {label: "Go to Windlock Passage", action: "MOVE", target: "Windlock Passage",},
+            {label: "— Go to Windlock Passage", action: "MOVE", target: "Windlock Passage",},
         ]           
     },
     "Windlock Passage": {
         text: "There's only a single metal door leading you on, you have no choice but to move forward.",     
         image: "src/assets/images/windlock-passage.png",   
         choices: [
-            {label: "Go to Lobby", action: "MOVE", target: "Lobby",},
+            {label: "— Go to Lobby", action: "MOVE", target: "Lobby",},
         ]           
     },
     // CROSSROADS
@@ -23,15 +23,15 @@ const rooms =
         comment: "The lobby is quiet, maybe too quiet.",
         image: "src/assets/images/lobby.png",
         choices: [
-            {label: "Go to Store Room", action: "MOVE", target: "Store Room"},
+            {label: "— Go to Store Room", action: "MOVE", target: "Store Room"},
             
-            {label: "Go to Dining Room", action: "MOVE", target: "Dining Room"},
+            {label: "— Go to Dining Room", action: "MOVE", target: "Dining Room"},
             
-            {label: "Go to Captain's Quarters", action: "MOVE", target: "Captains Quarters",
+            {label: "— Go to Captain's Quarters", action: "MOVE", target: "Captains Quarters",
             conditions: {has:['Octopus Crest'],hasNot:[],events:[],eventsNot:[]}},
             
-            {label: "Play the piano 😌", action: "EVENT", target: "playedPiano", 
-            effect: {sanity: 10}, message: "You hear an inspiring tune, something moved in the ship" },
+            {label: "— Play the piano", action: "EVENT", target: "playedPiano", 
+            effect: {sanity: 10}, message: "You hear an inspiring tune, something moved in the ship 😌" },
         ]
     },
         // choices: [
@@ -45,8 +45,8 @@ const rooms =
         comment: "Rats and bats abound.",
         image: "src/assets/images/store-room.png",
         choices: [
-            {label: "Go to Engine Room", action: "MOVE", target: "Engine Room"},
-            {label: "Pickup the Octopus Crest", action: "PICKUP", target: "Octopus Crest",
+            {label: "— Go to Engine Room", action: "MOVE", target: "Engine Room"},
+            {label: "— Pickup the Octopus Crest", action: "PICKUP", target: "Octopus Crest",
              message: "You pick up the Octopus Crest."},
 
         ]
@@ -66,10 +66,10 @@ const rooms =
         comment: "You could reach the Command Deck from here, is your blood enough to make the best of this chance?",
         image: "src/assets/images/boiler-room.png",
         choices: [
-            {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
-            {label: "Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench", message: "You pick up the Wrench."},
+            {label: "— Go to Command Deck", action: "MOVE", target: "Command Deck",},
+            {label: "— Pickup the Wrench 🔧", action: "PICKUP", target: "Wrench", message: "You pick up the Wrench."},
             //HARD EVENT
-            {label: "Activate the Boiler (HARD)", action: "DICE", target: 50,
+            {label: "— Activate the Boiler (HARD)", action: "DICE", target: 50,
             success: { message: "You activated the Boiler 😌", effect: {sanity: 20}, event: 'activatedBoiler'},            
             fail: { message: "You couldn't activate the Boiler 😵", effect: {sanity: -20}, event: 'notActivatedBoiler'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['activatedBoiler']}, },
@@ -81,7 +81,7 @@ const rooms =
         comment: "You should muster every fiber of your being to move forward",
         image: "src/assets/images/dining-room.png",           
         choices: [
-            {label: "Go to Nightwatch Gallery 😵", action: "MOVE", target: "Nightwatch Gallery", effect: {sanity: -20},},
+            {label: "— Go to Nightwatch Gallery", action: "MOVE", target: "Nightwatch Gallery", effect: {sanity: -20}, message: "This move took it's toll on you 😵"},
         ]
     },
     "Nightwatch Gallery": {
@@ -89,11 +89,11 @@ const rooms =
         comment: "You could use a tool to open a passage",
         image: "src/assets/images/nightwatch-gallery.png",           
         choices: [
-            {label: "Use the Wrench 🔧 to force yourself into the Command Deck", action: "MOVE", target: "Command Deck",
+            {label: "— Use the Wrench 🔧 to force yourself into the Command Deck", action: "MOVE", target: "Command Deck",
             conditions: {has:['Wrench'],hasNot:[],events:[],eventsNot:[]},
             message: "You used the wrench to open the passage",},
             // HARD EVENT
-            {label: "Talk to a painting (HARD)", action: "DICE", target: 50,
+            {label: "— Talk to a painting (HARD)", action: "DICE", target: 50,
             success: { message: "The painting answers back: 'Leave now or be forever cursed' 😵", effect: {sanity: -20}, event: 'talkedPainting'},            
             fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notTalkedPainting'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['talkedPainting']}, },
@@ -105,7 +105,7 @@ const rooms =
         comment: "There's a slot in the shape of an octopuss in the wall",
         image: "src/assets/images/captains-quarters.png",           
         choices: [
-            {label: "Go to Secret Room", action: "MOVE", target: "Secret Room", 
+            {label: "— Go to Secret Room", action: "MOVE", target: "Secret Room", 
             conditions: {has:['Octopus Crest'],hasNot:[],events:[],eventsNot:[]},
         },
         ]
@@ -115,9 +115,9 @@ const rooms =
         comment: "The book is calling you...",
         image: "src/assets/images/secret-room.png",           
         choices: [
-            {label: "Go to Command Deck", action: "MOVE", target: "Command Deck",},
+            {label: "— Go to Command Deck", action: "MOVE", target: "Command Deck",},
             //HARD EVENT
-            {label: "Read the Necronomicon (HARD)", action: "DICE", target: 50,
+            {label: "— Read the Necronomicon (HARD)", action: "DICE", target: 50,
             success: { message: "Ymg' ah gn'th 😵", effect: {sanity: -20}, event: 'readNecronomicon'},            
             fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notReadNecronomicon'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['readNecronomicon']}, },
@@ -130,7 +130,7 @@ const rooms =
         comment: "This looks like game over",
         image: "src/assets/images/command-deck.png",
         choices: [
-            {label: "Jump in the water", action: "MOVE", target: "Forecastle"},
+            {label: "— Jump in the water", action: "MOVE", target: "Forecastle"},
             // {label: "Try to read the papers", action: "DICE", target: 70,
             // success: { message: "You were able to read", effect: {sanity: 20}, event: 'readPapers'},  
             // fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'}

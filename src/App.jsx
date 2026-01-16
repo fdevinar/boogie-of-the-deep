@@ -139,7 +139,7 @@ function App() {
         </CinemaModal>
         }
 
-        <p className="dev-pride">Build v0.1</p>
+        <p className="dev-pride">Build v0.7</p>
    
       </main>
     </>
