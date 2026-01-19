@@ -1,5 +1,5 @@
 
-import { useReducer, useState, useEffect } from 'react'
+import { useReducer, useState, useEffect, useRef } from 'react'
 import './App.css'
 import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
@@ -20,6 +20,7 @@ function App() {
   const [cinemaModalImage, setCinemaModalImage] = useState('');
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
+  const mainRef = useRef(null);
 
   const { playWaves, playSteam, playReveal, playWind } = sounds();
   const soundScript = {  
@@ -30,7 +31,8 @@ function App() {
   }
 
     // ON ROOM CHANGE
-    useEffect(()=> {            
+    useEffect(()=> {           
+      
       // PLAY AUDIO
       if (soundScript[state.room]) {
         soundScript[state.room]();
@@ -70,12 +72,14 @@ function App() {
     },[state.sanity])    
 
   // CALLS ENDING
-  function displayEnding(type) {
+  function displayEnding(type) {    
+    mainRef.current.style.pointerEvents = 'none';
     setCinemaModalImage(cinemaScript[type].image);
     setCinemaModalCaption(cinemaScript[type].caption);
-    setTimeout(function() {
+    setTimeout(function() {          
           dispatch({type: RESET});
-        }, 7000);
+          mainRef.current.style.pointerEvents = 'auto';        
+        }, 7000);    
   }
 
   function handleChoiceSelect(choice) {    
@@ -113,7 +117,7 @@ function App() {
 
   return (
     <>
-      <main className={sanityTable(state.sanity)}>
+      <main className={sanityTable(state.sanity)} ref={mainRef}>
 
         <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
           BOOGIE OF THE DEEP
@@ -139,7 +143,7 @@ function App() {
         </CinemaModal>
         }
 
-        <p className="dev-pride">Build v0.7</p>
+        <p className="dev-pride">Build v0.8</p>
    
       </main>
     </>
