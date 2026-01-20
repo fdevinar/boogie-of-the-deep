@@ -21,6 +21,7 @@ function App() {
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
   const mainRef = useRef(null);
+  const [isEndingTriggered, setEndingTriggered] = useState(false);
 
   const { playWaves, playSteam, playReveal, playWind } = sounds();
   const soundScript = {  
@@ -72,14 +73,23 @@ function App() {
     },[state.sanity])    
 
   // CALLS ENDING
-  function displayEnding(type) {    
-    mainRef.current.style.pointerEvents = 'none';
-    setCinemaModalImage(cinemaScript[type].image);
-    setCinemaModalCaption(cinemaScript[type].caption);
-    setTimeout(function() {          
-          dispatch({type: RESET});
-          mainRef.current.style.pointerEvents = 'auto';        
-        }, 7000);    
+  function displayEnding(type) {
+    if (!isEndingTriggered) {
+      mainRef.current.style.pointerEvents = 'none';
+      setCinemaModalImage(cinemaScript[type].image);
+      setCinemaModalCaption(cinemaScript[type].caption);
+      setEndingTriggered(true);
+      setTimeout(function() {          
+            resetSession();            
+          }, 7000);    
+    }
+  }
+
+  function resetSession() {
+    dispatch({type: RESET});
+    setMessageToast('');
+    setEndingTriggered(false);
+    mainRef.current.style.pointerEvents = 'auto';
   }
 
   function handleChoiceSelect(choice) {    
@@ -119,7 +129,7 @@ function App() {
     <>
       <main className={sanityTable(state.sanity)} ref={mainRef}>
 
-        <h1 onClick={ ()=>{ dispatch({type: RESET});setMessageToast('');} }>
+        <h1 onClick={ ()=>{ resetSession() } }>
           BOOGIE OF THE DEEP
         </h1>
         {/* SS BRUIT 1920 */}
