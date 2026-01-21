@@ -1,5 +1,5 @@
 
-import { useReducer, useState, useEffect, useRef } from 'react'
+import { useReducer, useState, useEffect, useRef, useDebugValue } from 'react'
 import './App.css'
 import { MOVE, PICKUP, SANITY_CHANGE, EVENT, DICE, RESET } from "./core/actions"
 import { reducer } from './core/reducer'
@@ -20,8 +20,9 @@ function App() {
   const [cinemaModalImage, setCinemaModalImage] = useState('');
   const [cinemaModalCaption, setCinemaModalCaption] = useState('');
   const cinemaScript = cinemaDirector();
-  const mainRef = useRef(null);
   const [isEndingTriggered, setEndingTriggered] = useState(false);
+  const mainRef = useRef(null);
+  const endingTimeout = useRef(null);
 
   const { playWaves, playSteam, playReveal, playWind } = sounds();
   const soundScript = {  
@@ -31,46 +32,54 @@ function App() {
     'Captains Quarters': ()=> playWind(),
   }
 
-    // ON ROOM CHANGE
-    useEffect(()=> {           
-      
-      // PLAY AUDIO
-      if (soundScript[state.room]) {
-        soundScript[state.room]();
+  // CUSTOM HOOKS
+  function useEventDebug(events) {
+    useDebugValue (events.join(', '));
+  }
+  useEventDebug(state.events);
+
+
+  // ON ROOM CHANGE
+  useEffect(()=> {           
+    
+    // PLAY AUDIO
+    if (soundScript[state.room]) {
+      soundScript[state.room]();
+    }
+    // DISPLAY CINEMA MODAL
+    if (cinemaScript[state.room]) {
+      setCinemaModalImage(cinemaScript[state.room].image);
+      setCinemaModalCaption(cinemaScript[state.room].caption);
+    } else {
+      setCinemaModalImage('');
+      setCinemaModalCaption('');
+    }      
+    // COMMAND DECK - CHECK FOR ENDINGS
+    if (state.room === 'Command Deck') {
+      console.log(state.events);
+      // hard events: talkedPainting, readNecronomicon, activatedBoiler
+      // if (state.events.includes('talkedPainting') && state.events.includes('readNecronomicon')  && state.events.includes('activatedBoiler') ) {          
+      if (state.events.includes('readNecronomicon')  && state.events.includes('activatedBoiler') ) {          
+        displayEnding('Perfect Ending');
+      } else if (state.events.includes('readNecronomicon')) {
+        displayEnding('Secret Ending');          
+      } else if (state.events.includes('talkedPainting')) {
+        displayEnding('Good Ending');          
       }
-      // DISPLAY CINEMA MODAL
-      if (cinemaScript[state.room]) {
-        setCinemaModalImage(cinemaScript[state.room].image);
-        setCinemaModalCaption(cinemaScript[state.room].caption);
-      } else {
-        setCinemaModalImage('');
-        setCinemaModalCaption('');
-      }      
-      // COMMAND DECK - CHECK FOR ENDINGS
-      if (state.room === 'Command Deck') {
-        console.log(state.events);
-        // hard events: talkedPainting, readNecronomicon, activatedBoiler
-        if (state.events.includes('talkedPainting') && state.events.includes('readNecronomicon')  && state.events.includes('activatedBoiler') ) {          
-          displayEnding('Perfect Ending');
-        } else if (state.events.includes('readNecronomicon')) {
-          displayEnding('Secret Ending');          
-        } else if (state.events.includes('talkedPainting')) {
-          displayEnding('Good Ending');          
-        }
-      }
-    },[state.room])
+    }
+  },[state.room])
   
-    // CHECK FOR STEP/SANITY BOUNDARIES
-    useEffect(()=> {
-      if (state.steps <= 0) {
-        displayEnding('Steps Ending');                
-      }
-    },[state.steps])
-    useEffect(()=> {
-      if (state.sanity <=-20) {
-        displayEnding('Sanity Ending');                
-      }
-    },[state.sanity])    
+  // CHECK FOR STEP/SANITY BOUNDARIES
+  useEffect(()=> {
+    if (state.steps <= 0) {
+      displayEnding('Steps Ending');                
+    }
+  },[state.steps])
+  useEffect(()=> {
+    if (state.sanity <=-20) {
+      displayEnding('Sanity Ending');                
+    }
+  },[state.sanity])    
 
   // CALLS ENDING
   function displayEnding(type) {
@@ -79,13 +88,15 @@ function App() {
       setCinemaModalImage(cinemaScript[type].image);
       setCinemaModalCaption(cinemaScript[type].caption);
       setEndingTriggered(true);
-      setTimeout(function() {          
-            resetSession();            
-          }, 7000);    
+      endingTimeout.current = setTimeout(resetSession, 7000);      
     }
   }
 
   function resetSession() {
+    if (endingTimeout.current) {
+      clearTimeout(endingTimeout.current);
+      endingTimeout.current = null;
+    }
     dispatch({type: RESET});
     setMessageToast('');
     setEndingTriggered(false);
@@ -128,12 +139,10 @@ function App() {
   return (
     <>
       <main className={sanityTable(state.sanity)} ref={mainRef}>
-
         <h1 onClick={ ()=>{ resetSession() } }>
           BOOGIE OF THE DEEP
         </h1>
         {/* SS BRUIT 1920 */}
-
         <RoomView
             room={state.room}
             inventory={state.inventory}          
@@ -141,10 +150,8 @@ function App() {
             message={messageToast}
             onChoiceSelect={(choice)=>handleChoiceSelect(choice)}
         >
-        </RoomView>
-        
-        <HudBar state={state}></HudBar>
-        
+        </RoomView>        
+        <HudBar state={state}></HudBar>        
         {cinemaModalImage && 
         <CinemaModal
             image={cinemaModalImage}
@@ -152,9 +159,7 @@ function App() {
             onClose={()=>setCinemaModalImage('')}>
         </CinemaModal>
         }
-
-        <p className="dev-pride">Build v0.8</p>
-   
+        <p className="dev-pride">Build v1.0</p>
       </main>
     </>
   )
