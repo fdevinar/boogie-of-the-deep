@@ -63,7 +63,7 @@ function App() {
         displayEnding('Perfect Ending');
       } else if (state.events.includes('readNecronomicon')) {
         displayEnding('Secret Ending');          
-      } else if (state.events.includes('talkedPainting')) {
+      } else if (state.events.includes('choseToLeave')) {
         displayEnding('Good Ending');          
       }
     }

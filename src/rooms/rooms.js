@@ -71,7 +71,7 @@ const rooms =
             //HARD EVENT
             {label: "— Activate the Boiler (HARD)", action: "DICE", target: 50,
             success: { message: "You activated the Boiler 😌", effect: {sanity: 20}, event: 'activatedBoiler'},            
-            fail: { message: "You couldn't activate the Boiler 😵", effect: {sanity: -20}, event: 'notActivatedBoiler'},
+            fail: { message: "You couldn't activate the Boiler 😵", effect: {sanity: -30}, event: 'notActivatedBoiler'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['activatedBoiler']}, },
       ]
     },
@@ -94,9 +94,12 @@ const rooms =
             message: "You used the wrench to open the passage",},
             // HARD EVENT
             {label: "— Talk to a painting (HARD)", action: "DICE", target: 50,
-            success: { message: "The painting answers back: 'Leave now or be forever cursed' 😵", effect: {sanity: -20}, event: 'talkedPainting'},            
+            success: { message: "The painting answers back: 'Stay with us... forever!' 😵", effect: {sanity: -30}, event: 'talkedPainting'},            
             fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notTalkedPainting'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['talkedPainting']}, },
+            // CHOOSE TO LEAVE
+            {label: "— Defy the paintings!", action: "EVENT", target: "choseToLeave",
+                conditions: {has:[],hasNot:[],events:['talkedPainting'],eventsNot:['']}, }, 
         ]
     },
     // MEMORY PATH
@@ -118,11 +121,10 @@ const rooms =
             {label: "— Go to Command Deck", action: "MOVE", target: "Command Deck",},
             //HARD EVENT
             {label: "— Read the Necronomicon (HARD)", action: "DICE", target: 50,
-            success: { message: "Ymg' ah gn'th 😵", effect: {sanity: -20}, event: 'readNecronomicon'},            
-            fail: { message: "You weren't able to read 😵", effect: {sanity: -10}, event: 'notReadNecronomicon'},
+            success: { message: "Ymg' ah gn'th 😵", effect: {sanity: -30}, event: 'readNecronomicon'},            
+            fail: { message: "You weren't able to read 😵", effect: {sanity: -20}, event: 'notReadNecronomicon'},
             conditions: {has:[],hasNot:[],events:[],eventsNot:['readNecronomicon']}, },
         ]        
-
     },
     // FINAL DESTINATION
     "Command Deck": {
@@ -130,7 +132,7 @@ const rooms =
         comment: "This looks like game over",
         image: "src/assets/images/command-deck.png",
         choices: [
-            {label: "— Jump in the water", action: "MOVE", target: "Forecastle"},
+            {label: "— Jump in the water", action: "MOVE", target: "Forecastle"},                        
             // {label: "Try to read the papers", action: "DICE", target: 70,
             // success: { message: "You were able to read", effect: {sanity: 20}, event: 'readPapers'},  
             // fail: { message: "You weren't able to read", effect: {sanity: -20}, event: 'notReadPapers'}

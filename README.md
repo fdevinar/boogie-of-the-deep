@@ -1,29 +1,22 @@
-✅ Current React Grimoire Contents
+1.0 Version Finished: 22/01/2026
 
-== React Category ==
+*** Instructions on how to run Boogie of the Deep ***
 
-Function Reference vs Function Call in JSX (event handlers).
+Requirements:
+* Node.js (v18 or newer recommended)
+* npm (comes with Node)
 
-Function Reference vs Function Call in Props (passing functions down).
+# 1. Clone or download the repository
+git clone <repo-url>
+cd boogie-of-the-deep
 
-Callback via Props (lifting state + callbacks).
+# 2. Install dependencies
+npm install
 
-Props Destructuring Patterns (new).
+# 3. Start the game
+npm run dev
 
-== Vanilla JS Category ==
+# 4. Open browser at:
+http://localhost:5173
 
-Spread operator & array methods (reduce, map, filter).
-
-Arrow functions vs regular functions.
-
-Arrow Function Implicit vs Explicit Return.
-
-Bitwise OR with 0 (| 0) for truncation.
-
-== React Mindset Concepts ==
-
-React mindset: run logic like calculateWinner() during render, not only in event handlers.
-
-Derived state vs stored state.
-
-Reducer-style thinking (pure transitions).
+# 5. Enjoy!

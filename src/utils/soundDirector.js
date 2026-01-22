@@ -6,7 +6,7 @@ import windSfx from '../assets/audio/wind-past.mp3'
 
 export default function sounds ( ) {
 
-    const globalConfig = {loop: false, volume: 0.0,}
+    const globalConfig = {loop: false, volume: 0.3,}
 
     const [playWaves] = useSound(seaWavesSfx, globalConfig );
     const [playSteam] = useSound(fireSteamSfx, globalConfig );
